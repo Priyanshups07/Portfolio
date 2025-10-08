@@ -128,7 +128,7 @@ export default function Contact() {
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all`}
-                    placeholder="John Doe"
+                    placeholder="Enter your full name"
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-500">{errors.name}</p>
@@ -148,7 +148,7 @@ export default function Contact() {
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all`}
-                    placeholder="john@example.com"
+                    placeholder="Enter your email address"
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-500">{errors.email}</p>
@@ -167,8 +167,8 @@ export default function Contact() {
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.subject ? 'border-red-500' : 'border-gray-300'
-                    } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all`}
-                    placeholder="Project Collaboration"
+                    } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-all`}
+                    placeholder="Enter subject of your message"
                   />
                   {errors.subject && (
                     <p className="mt-1 text-sm text-red-500">{errors.subject}</p>
@@ -188,7 +188,7 @@ export default function Contact() {
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.message ? 'border-red-500' : 'border-gray-300'
                     } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none`}
-                    placeholder="Tell me about your project..."
+                    placeholder="Enter your detailed message here"
                   />
                   {errors.message && (
                     <p className="mt-1 text-sm text-red-500">{errors.message}</p>

@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-blue-400">Priyanshu</span> Sahu
             </h3>
             <p className="text-gray-400">
-              Building intelligent systems and cutting-edge solutions with passion and innovation.
+              Aspiring Python Developer building scalable applications and AI-driven solutions.
             </p>
           </div>
 

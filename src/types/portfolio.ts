@@ -32,3 +32,7 @@ export interface ContactInfo {
   github: string;
   instagram: string;
 }
+
+export interface SoftSkill {
+  name: string;
+}

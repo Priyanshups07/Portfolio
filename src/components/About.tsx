@@ -52,9 +52,9 @@ export default function About() {
                 </div>
                 <div className="space-y-3">
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="font-bold text-lg text-gray-900">B.Tech Computer Science Engineering</h4>
-                    <p className="text-gray-700 font-medium">Raipur Institute of Technology (RITEE)</p>
-                    <p className="text-gray-600">2022 - 2026</p>
+                    <h4 className="font-bold text-lg text-gray-900">B.Tech in Computer Science Engineering</h4>
+                    <p className="text-gray-700 font-medium">Raipur Institute of Technology (CSVTU University)</p>
+                    <p className="text-gray-600">2022–2026</p>
                     <p className="text-blue-600 mt-2">Specialization: AI/ML and Emerging Technologies</p>
                   </div>
                 </div>
@@ -72,6 +72,30 @@ export default function About() {
                   {aboutMe.intro}
                 </p>
               </motion.div>
+
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 mt-6"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-green-100 rounded-lg mr-4">
+                    <GraduationCap className="text-green-600" size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Languages</h3>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-700">Hindi</span>
+                    <span className="text-gray-600">Native</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-700">English</span>
+                    <span className="text-gray-600">Fluent</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              
             </motion.div>
 
             <motion.div variants={itemVariants}>

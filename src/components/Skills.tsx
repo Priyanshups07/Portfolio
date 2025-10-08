@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Code2, Database, Wrench, Brain } from 'lucide-react';
-import { skills } from '../data/portfolioData';
+import { Code2, Database, Wrench, Brain, Users, Lightbulb, Clock, MessageCircle, Zap, Palette, CheckCircle } from 'lucide-react';
+import { skills, softSkills } from '../data/portfolioData';
 
 const categoryIcons = {
   languages: Code2,
@@ -51,7 +51,71 @@ export default function Skills() {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Soft Skills Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7 }}
+          className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border border-purple-100"
+        >
+          <div className="flex items-center justify-center mb-6">
+            <Users className="text-purple-600 mr-3" size={32} />
+            <h3 className="text-3xl font-bold text-gray-900">Soft Skills</h3>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {softSkills.map((skill, index) => {
+              // Map each skill to an appropriate icon
+              let IconComponent = Lightbulb;
+              switch (skill) {
+                case 'Problem-Solving':
+                  IconComponent = Lightbulb;
+                  break;
+                case 'Teamwork & Collaboration':
+                  IconComponent = Users;
+                  break;
+                case 'Adaptability':
+                  IconComponent = Zap;
+                  break;
+                case 'Time Management':
+                  IconComponent = Clock;
+                  break;
+                case 'Communication Skills':
+                  IconComponent = MessageCircle;
+                  break;
+                case 'Creativity':
+                  IconComponent = Palette;
+                  break;
+                default:
+                  IconComponent = CheckCircle;
+              }
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white rounded-xl p-4 shadow-md border border-purple-100 flex items-center"
+                >
+                  <div className="p-2 bg-purple-100 rounded-lg mr-3">
+                    <IconComponent className="text-purple-600" size={20} />
+                  </div>
+                  <span className="text-gray-800 font-medium">{skill}</span>
+                </motion.div>
+              );
+            })}
+          </div>
+          
+          <div className="mt-8 text-center text-gray-600">
+            <p>These interpersonal skills complement my technical expertise to deliver exceptional results in collaborative environments.</p>
+          </div>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {Object.entries(groupedSkills).map(([category, categorySkills], index) => {
             const Icon = categoryIcons[category as keyof typeof categoryIcons];
             const colorClass = categoryColors[category as keyof typeof categoryColors];

@@ -29,7 +29,7 @@ export default function Hero() {
                   transition={{ delay: 0.2 }}
                   className="inline-block mb-4 px-4 py-2 bg-blue-500/20 rounded-full border border-blue-400/30"
                 >
-                  <span className="text-blue-400 font-medium">AIML Student & Vibe Coder</span>
+                  <span className="text-blue-400 font-medium">Aspiring Python Developer</span>
                 </motion.div>
 
                 <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
@@ -40,11 +40,11 @@ export default function Hero() {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                  Building Intelligent Systems & Cutting-Edge Solutions
+                  Building Scalable Applications & AI-Driven Solutions
                 </p>
 
                 <p className="text-lg text-gray-400 mb-8">
-                  Passionate about AI, Machine Learning, and innovative technologies. I build intelligent software solutions, create dynamic applications, and explore new possibilities in tech.
+                  Aspiring Python Developer with expertise in Django, React, and AI-driven tools. Skilled in developing scalable full-stack and cross-platform applications, including real-time projects such as ScriptSetu and CodeArena.
                 </p>
 
                 <div className="flex space-x-4 mb-8">
