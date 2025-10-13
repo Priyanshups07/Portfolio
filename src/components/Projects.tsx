@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, Filter } from 'lucide-react';
 import { projects } from '../data/portfolioData';
+import { animationConfig, fadeInUp } from '../lib/animations';
+import { optimizeAnimationsForDevice } from '../lib/performance';
 
 const categories = [
   { id: 'all', name: 'All Projects' },
@@ -17,15 +19,23 @@ export default function Projects() {
   const filteredProjects = selectedCategory === 'all'
     ? projects
     : projects.filter(project => project.category === selectedCategory);
+    
+  // Optimize the number of project animations based on device capabilities
+  const maxProjects = optimizeAnimationsForDevice(filteredProjects.length);
+  const optimizedProjects = filteredProjects.slice(0, maxProjects);
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ 
+            duration: animationConfig.durations.medium,
+            ease: "easeOut"
+          }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -38,9 +48,15 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
+          transition={{ 
+            duration: animationConfig.durations.medium,
+            ease: "easeOut",
+            delay: animationConfig.durations.fast
+          }}
           className="flex items-center justify-center mb-12 flex-wrap gap-3"
         >
           <div className="flex items-center mr-4">
@@ -70,15 +86,23 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            transition={{ 
+              duration: animationConfig.durations.fast,
+              ease: "easeOut"
+            }}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredProjects.map((project, index) => (
+            {optimizedProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                transition={{ 
+                  delay: index * animationConfig.stagger.medium,
+                  duration: animationConfig.durations.medium,
+                  ease: "easeOut"
+                }}
                 whileHover={{ y: -10 }}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300"
               >
@@ -137,10 +161,14 @@ export default function Projects() {
           </motion.div>
         </AnimatePresence>
 
-        {filteredProjects.length === 0 && (
+        {optimizedProjects.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ 
+              duration: animationConfig.durations.medium,
+              ease: "easeOut"
+            }}
             className="text-center py-12"
           >
             <p className="text-gray-500 text-lg">No projects found in this category.</p>

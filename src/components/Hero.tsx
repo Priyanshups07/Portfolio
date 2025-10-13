@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, ChevronDown } from 'lucide-react';
 import { contactInfo } from '../data/portfolioData';
+import { animationConfig, fadeInUp, scaleIn } from '../lib/animations';
+import { getOptimizedAnimationProps } from '../lib/performance';
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -19,14 +21,21 @@ export default function Hero() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                transition={{ 
+                  duration: animationConfig.durations.medium,
+                  ease: "easeOut"
+                }}
               >
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
+                  variants={scaleIn}
+                  transition={{ 
+                    delay: animationConfig.durations.fast,
+                    duration: animationConfig.durations.medium,
+                    ease: "easeOut"
+                  }}
                   className="inline-block mb-4 px-4 py-2 bg-blue-500/20 rounded-full border border-blue-400/30"
                 >
                   <span className="text-blue-400 font-medium">Aspiring Python Developer</span>
@@ -52,7 +61,7 @@ export default function Hero() {
                     href={contactInfo.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/20"
                   >
@@ -62,7 +71,7 @@ export default function Hero() {
                     href={contactInfo.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/20"
                   >
@@ -72,7 +81,7 @@ export default function Hero() {
                     href={contactInfo.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/20"
                   >
@@ -92,18 +101,22 @@ export default function Hero() {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ 
+                duration: animationConfig.durations.slow,
+                ease: "easeOut",
+                delay: animationConfig.durations.medium
+              }}
               className="hidden md:flex items-center justify-center"
             >
               <div className="relative w-full max-w-md">
                 <motion.div
                   animate={{
-                    y: [0, -20, 0],
+                    y: [0, -10, 0],
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -117,16 +130,9 @@ export default function Hero() {
                   </div>
                 </motion.div>
 
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg opacity-20"
-                ></motion.div>
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full opacity-20"
-                ></motion.div>
+                {/* Simplified decorative animations for better performance */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg opacity-20 animate-pulse"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
               </div>
             </motion.div>
           </div>
@@ -134,8 +140,12 @@ export default function Hero() {
       </div>
 
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ y: [0, 5, 0] }}
+        transition={{ 
+          duration: 1.5, 
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
         onClick={scrollToAbout}
       >

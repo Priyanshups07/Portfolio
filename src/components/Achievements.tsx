@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Trophy, Target, Award, Rocket } from 'lucide-react';
 import { achievements, futureGoals } from '../data/portfolioData';
+import { animationConfig, fadeInUp, fadeInLeft, fadeInRight } from '../lib/animations';
 
 export default function Achievements() {
   return (
@@ -9,10 +10,14 @@ export default function Achievements() {
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ 
+                duration: animationConfig.durations.medium,
+                ease: "easeOut"
+              }}
               className="mb-12"
             >
               <div className="flex items-center mb-6">
@@ -28,11 +33,24 @@ export default function Achievements() {
               {achievements.map((achievement, index) => (
                 <motion.div
                   key={achievement.id}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={fadeInLeft}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
+                  transition={{ 
+                    delay: index * animationConfig.stagger.medium,
+                    duration: animationConfig.durations.medium,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    x: 10,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20 
+                    }
+                  }}
                   className="bg-gradient-to-r from-white to-yellow-50 rounded-xl p-6 border border-yellow-200 shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-start">
@@ -55,10 +73,15 @@ export default function Achievements() {
 
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ 
+                duration: animationConfig.durations.medium,
+                ease: "easeOut",
+                delay: animationConfig.durations.fast
+              }}
               className="mb-12"
             >
               <div className="flex items-center mb-6">
@@ -74,11 +97,24 @@ export default function Achievements() {
               {futureGoals.map((goal, index) => (
                 <motion.div
                   key={goal.id}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={fadeInRight}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: -10 }}
+                  transition={{ 
+                    delay: index * animationConfig.stagger.medium,
+                    duration: animationConfig.durations.medium,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    x: -10,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20 
+                    }
+                  }}
                   className="bg-gradient-to-l from-white to-blue-50 rounded-xl p-6 border border-blue-200 shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-start">
@@ -101,10 +137,15 @@ export default function Achievements() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          transition={{ 
+            delay: animationConfig.durations.medium,
+            duration: animationConfig.durations.medium,
+            ease: "easeOut"
+          }}
           className="mt-16 bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-8 md:p-12 text-white text-center"
         >
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
@@ -114,8 +155,22 @@ export default function Achievements() {
             I'm always excited to collaborate on innovative projects and explore new opportunities in tech.
           </p>
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ 
+              scale: 1.05,
+              transition: { 
+                type: "spring", 
+                stiffness: 400, 
+                damping: 10 
+              }
+            }}
+            whileTap={{ 
+              scale: 0.95,
+              transition: { 
+                type: "spring", 
+                stiffness: 400, 
+                damping: 10 
+              }
+            }}
             onClick={() => {
               const element = document.querySelector('#contact');
               if (element) element.scrollIntoView({ behavior: 'smooth' });

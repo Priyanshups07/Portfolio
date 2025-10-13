@@ -1,26 +1,13 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Code, Sparkles } from 'lucide-react';
 import { aboutMe } from '../data/portfolioData';
+import { animationConfig, fadeInUp, fadeInLeft } from '../lib/animations';
+import { optimizeAnimationsForDevice } from '../lib/performance';
 
 export default function About() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
+  // Optimize the number of paragraph animations
+  const maxParagraphs = optimizeAnimationsForDevice(aboutMe.story.length);
+  const optimizedParagraphs = aboutMe.story.slice(0, maxParagraphs);
 
   return (
     <section id="about" className="py-20 bg-gray-50">
@@ -29,9 +16,19 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 }
+          }}
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div 
+            variants={fadeInUp}
+            transition={{ 
+              duration: animationConfig.durations.medium,
+              ease: "easeOut"
+            }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               About <span className="text-blue-600">Me</span>
             </h2>
@@ -39,7 +36,7 @@ export default function About() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <motion.div variants={itemVariants}>
+            <motion.div variants={fadeInUp}>
               <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
                 <div className="flex items-center mb-6">
                   <div className="p-3 bg-blue-100 rounded-lg mr-4">
@@ -94,11 +91,9 @@ export default function About() {
                   </div>
                 </div>
               </motion.div>
-
-              
             </motion.div>
 
-            <motion.div variants={itemVariants}>
+            <motion.div variants={fadeInUp}>
               <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
                 <div className="flex items-center mb-6">
                   <div className="p-3 bg-cyan-100 rounded-lg mr-4">
@@ -110,13 +105,18 @@ export default function About() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  {aboutMe.story.map((paragraph, index) => (
+                  {optimizedParagraphs.map((paragraph, index) => (
                     <motion.p
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial="hidden"
+                      whileInView="visible"
+                      variants={fadeInLeft}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ 
+                        delay: index * animationConfig.stagger.medium,
+                        duration: animationConfig.durations.medium,
+                        ease: "easeOut"
+                      }}
                       className="text-gray-700 leading-relaxed"
                     >
                       {paragraph}

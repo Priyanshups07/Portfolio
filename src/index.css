@@ -10,6 +10,32 @@
   body {
     @apply font-sans antialiased;
   }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Performance optimizations for mobile devices */
+  .mobile-device {
+    .motion-reduce-mobile {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+  
+  /* Class to reduce motion globally */
+  .reduce-motion {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer utilities {

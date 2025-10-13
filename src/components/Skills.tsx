@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Code2, Database, Wrench, Brain, Users, Lightbulb, Clock, MessageCircle, Zap, Palette, CheckCircle } from 'lucide-react';
 import { skills, softSkills } from '../data/portfolioData';
+import { animationConfig, fadeInUp } from '../lib/animations';
+import { optimizeAnimationsForDevice } from '../lib/performance';
 
 const categoryIcons = {
   languages: Code2,
@@ -35,14 +37,26 @@ export default function Skills() {
     return acc;
   }, {} as Record<string, typeof skills>);
 
+  // Optimize the number of animations based on device capabilities
+  const maxSoftSkills = optimizeAnimationsForDevice(softSkills.length);
+  const optimizedSoftSkills = softSkills.slice(0, maxSoftSkills);
+  
+  const skillCategories = Object.entries(groupedSkills);
+  const maxCategories = optimizeAnimationsForDevice(skillCategories.length);
+  const optimizedCategories = skillCategories.slice(0, maxCategories);
+
   return (
     <section id="skills" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ 
+            duration: animationConfig.durations.medium,
+            ease: "easeOut"
+          }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -53,10 +67,15 @@ export default function Skills() {
 
         {/* Soft Skills Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
-          transition={{ delay: 0.7 }}
+          transition={{ 
+            delay: animationConfig.durations.slower,
+            duration: animationConfig.durations.medium,
+            ease: "easeOut"
+          }}
           className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border border-purple-100"
         >
           <div className="flex items-center justify-center mb-6">
@@ -65,7 +84,7 @@ export default function Skills() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {softSkills.map((skill, index) => {
+            {optimizedSoftSkills.map((skill, index) => {
               // Map each skill to an appropriate icon
               let IconComponent = Lightbulb;
               switch (skill) {
@@ -94,10 +113,15 @@ export default function Skills() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={fadeInUp}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ 
+                    delay: index * animationConfig.stagger.medium,
+                    duration: animationConfig.durations.medium,
+                    ease: "easeOut"
+                  }}
                   whileHover={{ scale: 1.05 }}
                   className="bg-white rounded-xl p-4 shadow-md border border-purple-100 flex items-center"
                 >
@@ -116,7 +140,7 @@ export default function Skills() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {Object.entries(groupedSkills).map(([category, categorySkills], index) => {
+          {optimizedCategories.map(([category, categorySkills], index) => {
             const Icon = categoryIcons[category as keyof typeof categoryIcons];
             const colorClass = categoryColors[category as keyof typeof categoryColors];
             const categoryName = categoryNames[category as keyof typeof categoryNames];
@@ -124,10 +148,15 @@ export default function Skills() {
             return (
               <motion.div
                 key={category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="visible"
+                variants={fadeInUp}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ 
+                  delay: index * animationConfig.stagger.medium,
+                  duration: animationConfig.durations.medium,
+                  ease: "easeOut"
+                }}
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300"
               >
@@ -150,7 +179,11 @@ export default function Skills() {
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.2 }}
+                          transition={{ 
+                            duration: animationConfig.durations.slow,
+                            delay: animationConfig.durations.fast,
+                            ease: "easeOut"
+                          }}
                           className={`h-full bg-gradient-to-r ${colorClass} rounded-full`}
                         />
                       </div>
@@ -163,10 +196,15 @@ export default function Skills() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          transition={{ 
+            delay: animationConfig.durations.medium,
+            duration: animationConfig.durations.medium,
+            ease: "easeOut"
+          }}
           className="mt-12 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border border-blue-100"
         >
           <div className="text-center">

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Instagram, Send, MapPin } from 'lucide-react';
 import { contactInfo } from '../data/portfolioData';
+import { animationConfig, fadeInUp, fadeInLeft, fadeInRight } from '../lib/animations';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -79,10 +80,14 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ 
+            duration: animationConfig.durations.medium,
+            ease: "easeOut"
+          }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -96,10 +101,14 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInLeft}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ 
+              duration: animationConfig.durations.medium,
+              ease: "easeOut"
+            }}
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send a Message</h3>
@@ -108,6 +117,10 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: animationConfig.durations.fast,
+                    ease: "easeOut"
+                  }}
                   className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700"
                 >
                   Message sent successfully! I'll get back to you soon.
@@ -198,8 +211,22 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  whileHover={{ 
+                    scale: isSubmitting ? 1 : 1.02,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 400, 
+                      damping: 10 
+                    }
+                  }}
+                  whileTap={{ 
+                    scale: isSubmitting ? 1 : 0.98,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 400, 
+                      damping: 10 
+                    }
+                  }}
                   className={`w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ${
                     isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                   }`}
@@ -221,10 +248,15 @@ export default function Contact() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeInRight}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ 
+              duration: animationConfig.durations.medium,
+              ease: "easeOut",
+              delay: animationConfig.durations.fast
+            }}
             className="space-y-6"
           >
             <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl shadow-xl p-8 text-white">
@@ -261,7 +293,15 @@ export default function Contact() {
                   href={contactInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03, x: 10 }}
+                  whileHover={{ 
+                    scale: 1.03, 
+                    x: 10,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20 
+                    }
+                  }}
                   className="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
                 >
                   <div className="p-3 bg-blue-500 rounded-lg mr-4">
@@ -277,7 +317,15 @@ export default function Contact() {
                   href={contactInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03, x: 10 }}
+                  whileHover={{ 
+                    scale: 1.03, 
+                    x: 10,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20 
+                    }
+                  }}
                   className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <div className="p-3 bg-gray-900 rounded-lg mr-4">
@@ -293,7 +341,15 @@ export default function Contact() {
                   href={contactInfo.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03, x: 10 }}
+                  whileHover={{ 
+                    scale: 1.03, 
+                    x: 10,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20 
+                    }
+                  }}
                   className="flex items-center p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors"
                 >
                   <div className="p-3 bg-gradient-to-br from-pink-500 to-orange-500 rounded-lg mr-4">
