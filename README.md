@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Priyanshu Sahu | Portfolio
 
 ## Project info
 
