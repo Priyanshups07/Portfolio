@@ -52,9 +52,14 @@ const ContactSection = () => {
                 <a href="https://github.com/Priyanshups07" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">"Priyanshups07"</a>
               </p>
               <p className="pl-4">
+                <span className="text-primary">"linkedin"</span>
+                <span>: </span>
+                <a href="https://www.linkedin.com/in/priyanshu-sahu-78300a339" target="_blank" rel="noopener noreferrer" className="text-neon-cyan hover:underline">"priyanshu-sahu-78300a339"</a>
+              </p>
+              <p className="pl-4">
                 <span className="text-primary">"location"</span>
                 <span>: </span>
-                <span className="text-foreground">"Raipur, India"</span>
+                <span className="text-foreground">"Raipur, Chhattisgarh, India"</span>
               </p>
               <p>{'}'}</p>
             </div>

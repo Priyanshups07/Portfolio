@@ -3,16 +3,64 @@ import { useRef } from 'react';
 
 const projects = [
   {
-    title: 'Academic Risk Predictor',
-    description: 'Machine learning web application that predicts student academic risk using academic and lifestyle data for early intervention.',
-    tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Streamlit'],
-    features: ['ML pipeline', 'Prediction interface', 'Data processing', 'Model evaluation'],
+    title: 'AI-Native Workforce Training Platform',
+    description: 'Role-based learning system aiding integration of AI into workflows through practice and feedback.',
+    tech: ['TypeScript', 'AI Integration'],
+    features: ['Role-based learning', 'Real-world workflows', 'Hands-on practice', 'Guided feedback'],
   },
   {
     title: 'CodeArena',
-    description: 'Full-stack coding competition and collaboration platform.',
+    description: 'Real-time coding competition platform for creating rooms, solving challenges, and live competition.',
     tech: ['Next.js', 'Node.js', 'Supabase', 'Tailwind CSS'],
-    features: ['Authentication', 'Dashboard', 'Competition rooms', 'Real-time listings', 'Interactive UI'],
+    features: ['Competition rooms', 'Live environment', 'Challenge solving', 'Real-time collaboration'],
+  },
+  {
+    title: 'RITEEE-HCKTHON-2026',
+    description: 'Official platform for the RITEEE × Kalp Studio Innovation Hackathon 2026, focusing on Blockchain, AI, and Cybersecurity.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    features: ['Event registration', 'Hackathon information', 'Prize pool details', 'Offline marathon guide'],
+  },
+  {
+    title: 'Crop Advisory Offline First',
+    description: 'Offline-first crop advisory app for farmers, providing instructions for rice, wheat, and soybeans in local languages.',
+    tech: ['HTML', 'PWA'],
+    features: ['Offline access', 'Local language support', 'Step-by-step guides', 'Crop management'],
+  },
+  {
+    title: 'YouTube-Dow',
+    description: 'A Python-based utility for downloading YouTube videos and playlists.',
+    tech: ['Python'],
+    features: ['Video downloading', 'Playlist support', 'Format selection'],
+  },
+  {
+    title: 'Academic Risk Predictor',
+    description: 'Machine learning app predicting student academic risk using attendance, marks, and lifestyle data.',
+    tech: ['Python', 'Pandas', 'Streamlit', 'Scikit-learn'],
+    features: ['Risk prediction', 'Student analytics', 'Health factor analysis', 'Study habit tracking'],
+  },
+  {
+    title: 'Data Insight Explorer',
+    description: 'Streamlit app for automated exploratory data analysis (EDA) of CSV files with visualizations.',
+    tech: ['Python', 'Streamlit', 'Pandas', 'Plotly'],
+    features: ['Automated EDA', 'CSV processing', 'Interactive visualizations', 'Summary statistics'],
+  },
+  {
+    title: 'Scriptsetu',
+    description: 'Cross-platform mobile app with camera, translator, and profile features for connecting users.',
+    tech: ['TypeScript', 'React Native', 'Expo'],
+    features: ['Camera integration', 'Real-time translator', 'Profile management', 'Cross-platform'],
+  },
+  {
+    title: 'Decode-Tech',
+    description: 'Modern website for a digital innovation agency showcasing 20+ professional services.',
+    tech: ['TypeScript', 'Vite', 'Tailwind CSS'],
+    features: ['Service showcase', 'Modern UI/UX', 'Digital agency portfolio', 'Responsive design'],
+  },
+  {
+    title: 'WhatsApp Messenger',
+    description: 'Automated messaging script for WhatsApp.',
+    tech: ['Python', 'Selenium'],
+    features: ['Automated messaging', 'Contact management', 'Message scheduling'],
   },
 ];
 

@@ -8,6 +8,9 @@ const Footer = () => (
         <a href="https://github.com/Priyanshups07" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors neon-underline">
           GitHub
         </a>
+        <a href="https://www.linkedin.com/in/priyanshu-sahu-78300a339" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors neon-underline">
+          LinkedIn
+        </a>
         <a href="mailto:iampriyanshusahu@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors neon-underline">
           Email
         </a>

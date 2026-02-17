@@ -30,13 +30,13 @@ const AboutSection = () => {
 
           <div className="relative z-10 space-y-5 text-muted-foreground leading-relaxed">
             <p>
-              <span className="text-foreground font-semibold">Priyanshu Sahu</span> is a Computer Science Engineering student at Raipur Institute of Technology with a strong focus on Python development, full-stack web engineering, and machine learning systems.
+              <span className="text-foreground font-semibold">Hi! I'm Priyanshu Sahu,</span> a Computer Science Engineering student at Raipur Institute of Technology. I'm passionate about Python, full-stack web engineering, and machine learning systems.
             </p>
             <p>
-              He builds real-world software solutions combining data science, backend architecture, and modern frontend technologies.
+              I love building real-world software solutions that combine the power of data science, robust backend architecture, and modern frontend technologies.
             </p>
             <p>
-              He enjoys transforming ideas into scalable applications and continuously improves through hands-on projects and engineering challenges.
+              Turning ideas into scalable applications is what drives me, and I'm always looking for the next hands-on project or engineering challenge to grow.
             </p>
           </div>
 
